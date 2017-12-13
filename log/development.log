@@ -1,0 +1,786 @@
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:31:56 +0200
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from block (3 levels) in <class:Railtie> at /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/activerecord-5.0.6/lib/active_record/railtie.rb:113)
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 792ms (Views: 778.2ms | ActiveRecord: 0.0ms)
+
+
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from require at /home/theblackarrow/.rvm/rubies/ruby-2.4.2/lib/ruby/site_ruby/2.4.0/rubygems/core_ext/kernel_require.rb:55)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from require at /home/theblackarrow/.rvm/rubies/ruby-2.4.2/lib/ruby/site_ruby/2.4.0/rubygems/core_ext/kernel_require.rb:55)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20171213213258)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171213213258"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseAuthyAddToUsers (20171213213315)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DeviseAuthyAddToUsers < ActiveRecord::Migration[4.2] (called from require at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/bin/rails:9)
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "authy_id" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_with_authy" datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "authy_enabled" boolean DEFAULT 'f'[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_authy_id" ON "users" ("authy_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171213213315"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-12-13 21:33:23.319670"], ["updated_at", "2017-12-13 21:33:23.319670"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_authy_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_authy_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_authy_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_authy_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /home/theblackarrow/Desktop/RubyOnRails/super-secret-puppies/app/models/application_record.rb:1)
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:38:01 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 371ms (Views: 357.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/puppies.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/application.self-7980286ccc9fbee9504eb3478a4535849ed59766e7d2e7d71577819fcb6a7ac1.css?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/puppies.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/devise_authy.self-1e5edef783104cf690ee529d10b250f1a1b35769a6aec267b93d1587f1da8f8b.css?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/assets/devise_authy.self-ffdead4ed036fe8754750aad9eb6932feef6b27c0b4429b562427c1450958393.js?body=1" for 127.0.0.1 at 2017-12-13 23:38:02 +0200
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:38:03 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (2.3ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (27.4ms)
+Completed 200 OK in 84ms (Views: 67.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-13 23:38:05 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-12-13 23:38:10 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"utPKeXazmq8QKlPRxyF7WmmXwfnL6GfnqourZJmlP9nz+a0gjqnB7N5nnf1Td7smtfHT/0lsuLfGooB5mjr9DA==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "theblackarrovv@gmail.com"], ["encrypted_password", "$2a$11$awfR43KHAeF8RjOj25fZS.0HW13LMNypZKP4mRYU.LhPpkiGq7IwW"], ["created_at", "2017-12-13 21:38:10.227826"], ["updated_at", "2017-12-13 21:38:10.227826"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-12-13 21:38:10.234148"], ["last_sign_in_at", "2017-12-13 21:38:10.234148"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2017-12-13 21:38:10.235700"], ["id", 1]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 237ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:38:10 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/enable_authy" for 127.0.0.1 at 2017-12-13 23:38:17 +0200
+Processing by Devise::DeviseAuthyController#GET_enable_authy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/devise_authy/enable_authy.html.erb within layouts/application
+  Rendered devise/devise_authy/enable_authy.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 48ms (Views: 45.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/enable_authy" for 127.0.0.1 at 2017-12-13 23:38:25 +0200
+Processing by Devise::DeviseAuthyController#POST_enable_authy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MTrrvda1jS6wUMOPUifoT3dc5q5l8xxx1VpcWcKY6QZ4EIzkLq/WbX4dDaPGcSgzqzr0qOd3wyG5c3dEwQcr0w==", "cellphone"=>"994939056", "commit"=>"Enable", "country_code"=>"380"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "authy_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["authy_id", "62544275"], ["updated_at", "2017-12-13 21:38:26.614365"], ["id", 1]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/verify_authy_installation
+Completed 302 Found in 772ms (ActiveRecord: 12.2ms)
+
+
+Started GET "/users/verify_authy_installation" for 127.0.0.1 at 2017-12-13 23:38:26 +0200
+Processing by Devise::DeviseAuthyController#GET_verify_authy_installation as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/devise_authy/verify_authy_installation.html.erb within layouts/application
+  Rendered devise/devise_authy/verify_authy_installation.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 46ms (Views: 43.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/request-sms" for 127.0.0.1 at 2017-12-13 23:38:32 +0200
+Processing by Devise::DeviseAuthyController#request_sms as JS
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 551ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/verify_authy_installation" for 127.0.0.1 at 2017-12-13 23:39:06 +0200
+Processing by Devise::DeviseAuthyController#POST_verify_authy_installation as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+FDABMf3qYxGUw+6C3zipt0ULhaz5q6xRJmmgIliInaxeqddP+3yz4gewZafKiLaAXI8EDFiceEosI2div3gow==", "token"=>"7277502", "commit"=>"Enable my account"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "authy_enabled" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["authy_enabled", "t"], ["updated_at", "2017-12-13 21:39:07.776159"], ["id", 1]]
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 893ms (ActiveRecord: 11.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:39:07 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:39:10 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:39:10 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:39:12 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 44ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:39:18 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8jPcLZ4jl8rh3OKwgIrvF2CVtXVk9i/X3ElBQZ4D2/Y0g+IWk3zmU5ulFhzC8SEoWa1brIDwWqXONGyL8DJVkA==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:39:18.291810"], ["sign_in_count", 2], ["updated_at", "2017-12-13 21:39:18.292716"], ["id", 1]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 200ms (ActiveRecord: 4.1ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:223:in `handle_unverified_request'
+devise (4.3.0) lib/devise/controllers/helpers.rb:253:in `handle_unverified_request'
+actionpack (5.0.6) lib/action_controller/metal/request_forgery_protection.rb:218:in `verify_authenticity_token'
+activesupport (5.0.6) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.6) lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.0.6) lib/active_support/callbacks.rb:170:in `block in halting'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `each'
+activesupport (5.0.6) lib/active_support/callbacks.rb:454:in `call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.6) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.6) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.6) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.6) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.6) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.0.6) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.6) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.6) lib/action_dispatch/routing/route_set.rb:727:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.6) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.6) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.6) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.6) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.6) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.7ms)
+DEPRECATION WARNING: Accessing mime types via constants is deprecated. Please change `Mime::HTML` to `Mime[:html]`. (called from acceptable_content_type? at /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/middleware.rb:58)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+DEPRECATION WARNING: Accessing mime types via constants is deprecated. Please change `Mime::WEB_CONSOLE_V2` to `Mime[:web_console_v2]`. (called from __home_theblackarrow__rvm_gems_ruby_______gems_web_console_______lib_web_console_templates_console_js_erb___1872452992322732303_70150545891360 at /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb:491)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.4ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (50.1ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:40:37 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8jPcLZ4jl8rh3OKwgIrvF2CVtXVk9i/X3ElBQZ4D2/Y0g+IWk3zmU5ulFhzC8SEoWa1brIDwWqXONGyL8DJVkA==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:40:37.587270"], ["last_sign_in_at", "2017-12-13 21:39:18.291810"], ["sign_in_count", 3], ["updated_at", "2017-12-13 21:40:37.588516"], ["id", 1]]
+  [1m[35m (9.8ms)[0m  [1m[36mcommit transaction[0m
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:40:37.790869"], ["last_sign_in_at", "2017-12-13 21:40:37.587270"], ["sign_in_count", 4], ["updated_at", "2017-12-13 21:40:37.791713"], ["id", 1]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 426ms (ActiveRecord: 17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:40:37 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/devise_authy.self-1e5edef783104cf690ee529d10b250f1a1b35769a6aec267b93d1587f1da8f8b.css?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/puppies.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/application.self-7980286ccc9fbee9504eb3478a4535849ed59766e7d2e7d71577819fcb6a7ac1.css?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/puppies.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/devise_authy.self-ffdead4ed036fe8754750aad9eb6932feef6b27c0b4429b562427c1450958393.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2017-12-13 23:40:38 +0200
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:40:39 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (2.2ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:40:43 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uZ6VrJbbis8Dx6blD7oCUckgyXV51PDOky3bF4U+4g9/LquXm4T7Vnm+UklNwcxu8BgnrJ3ShbyBUPbd6w9saQ==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:40:44.141048"], ["last_sign_in_at", "2017-12-13 21:40:37.790869"], ["sign_in_count", 5], ["updated_at", "2017-12-13 21:40:44.142013"], ["id", 1]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:40:44.338755"], ["last_sign_in_at", "2017-12-13 21:40:44.141048"], ["sign_in_count", 6], ["updated_at", "2017-12-13 21:40:44.339573"], ["id", 1]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 399ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:40:44 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:40:46 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 53ms (Views: 51.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:11 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (3.8ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 66ms (Views: 39.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/devise_authy.self-1e5edef783104cf690ee529d10b250f1a1b35769a6aec267b93d1587f1da8f8b.css?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/puppies.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/application.self-7980286ccc9fbee9504eb3478a4535849ed59766e7d2e7d71577819fcb6a7ac1.css?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/puppies.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/devise_authy.self-ffdead4ed036fe8754750aad9eb6932feef6b27c0b4429b562427c1450958393.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/turbolinks.self-1d1fddf91adc38ac2045c51f0a3e05ca97d07d24d15a4dcbf705009106489e69.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2017-12-13 23:42:12 +0200
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:15 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VCnTnooKeEcvXtIgmRkllCOB9AG3Y3JfjImUE+6Hb/aSme2lh1UJ3lUnJozbYuurGrka2FNlBy2e9LnZgLbhkA==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:42:15.253330"], ["last_sign_in_at", "2017-12-13 21:40:44.338755"], ["sign_in_count", 7], ["updated_at", "2017-12-13 21:42:15.254668"], ["id", 1]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 206ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:15 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:42:19 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:19 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:20 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.3ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 42ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:23 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3ordyBDAF/5GlXsVL54p/4E06EvBB54L/YWCmtUNs8VnwD77fkpFs2wUm3Pgx4Kbfe9ZGbhP756fD3eN//aMog==", "user"=>{"email"=>"theblackarrovv@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:42:23.281740"], ["last_sign_in_at", "2017-12-13 21:42:15.253330"], ["sign_in_count", 8], ["updated_at", "2017-12-13 21:42:23.282673"], ["id", 1]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 204ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:23 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:42:25 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:25 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-13 23:42:26 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.1ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-12-13 23:42:31 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JHWHVwgvDpNFuZClhFchVF9jsu8vPVs+dmv1c4RtBLIrPly7gMxud8Ga2TIXl10Xf9iBiAquBNhcbLzqHH+ANg==", "user"=>{"email"=>"theblackarrovv@uzhnu.edu.ua", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "theblackarrovv@uzhnu.edu.ua"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "theblackarrovv@uzhnu.edu.ua"], ["encrypted_password", "$2a$11$y2Dp3ns8am.op2wUmcDslu3zm8bcveg0/qoJaHj.59cWaLmuQq.Ym"], ["created_at", "2017-12-13 21:42:31.434516"], ["updated_at", "2017-12-13 21:42:31.434516"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-12-13 21:42:31.443658"], ["last_sign_in_at", "2017-12-13 21:42:31.443658"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2017-12-13 21:42:31.444366"], ["id", 2]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 216ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:31 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:42:35 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:35 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:37 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 41ms (Views: 38.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:40 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7OIhUG2giR+kX5ZRlf6C/us54CsNuL/GBVk0rJLOa8azo35vX+uUrhaKu72eJ3dDWokPy07F7NWMmC+IdXPUMA==", "user"=>{"email"=>"theblackarrovv@uzhnu.edu.ua", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@uzhnu.edu.ua"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:42:40.684590"], ["sign_in_count", 2], ["updated_at", "2017-12-13 21:42:40.685658"], ["id", 2]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 203ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:40 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:42:42 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:42 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:43 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:42:47 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gRRhLxtYQny/4WoBWaSFrQbTge4E1+Fb79GLg/qGaznpbB178d7Aln3Tb0Dc8eRt9YrCvkGeDsjMom/dFbcyCw==", "user"=>{"email"=>"theblackarrovv@uzhnu.edu.ua", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@uzhnu.edu.ua"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:42:47.469571"], ["last_sign_in_at", "2017-12-13 21:42:40.684590"], ["sign_in_count", 3], ["updated_at", "2017-12-13 21:42:47.470483"], ["id", 2]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 203ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:42:47 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/enable_authy" for 127.0.0.1 at 2017-12-13 23:42:51 +0200
+Processing by Devise::DeviseAuthyController#GET_enable_authy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering devise/devise_authy/enable_authy.html.erb within layouts/application
+  Rendered devise/devise_authy/enable_authy.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/enable_authy" for 127.0.0.1 at 2017-12-13 23:43:03 +0200
+Processing by Devise::DeviseAuthyController#POST_enable_authy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EPGdKpfTVW4PPku6aJi28M6jDSmqiesxYPiZD76Gyvp7UUVPl/jhJoHJaU4AmHUicPyym8BooOZ1RIBdGqYHiQ==", "cellphone"=>"976059581", "commit"=>"Enable", "country_code"=>"380"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "users" SET "authy_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["authy_id", "62552740"], ["updated_at", "2017-12-13 21:43:04.623599"], ["id", 2]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/verify_authy_installation
+Completed 302 Found in 812ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/users/verify_authy_installation" for 127.0.0.1 at 2017-12-13 23:43:04 +0200
+Processing by Devise::DeviseAuthyController#GET_verify_authy_installation as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering devise/devise_authy/verify_authy_installation.html.erb within layouts/application
+  Rendered devise/devise_authy/verify_authy_installation.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/request-sms" for 127.0.0.1 at 2017-12-13 23:43:06 +0200
+Processing by Devise::DeviseAuthyController#request_sms as JS
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 277ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/request-sms" for 127.0.0.1 at 2017-12-13 23:43:31 +0200
+Processing by Devise::DeviseAuthyController#request_sms as JS
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 634ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/verify_authy_installation" for 127.0.0.1 at 2017-12-13 23:43:40 +0200
+Processing by Devise::DeviseAuthyController#POST_verify_authy_installation as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NXxmbPY52Qo6FDOMRVPabEIJQvxrmQnA5X0r5LtqDIxe3L4J9hJtQrTjEXgtUxm+/Fb9TgF4QhfwwTK2H0rB/w==", "token"=>"6923250", "commit"=>"Enable my account"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "users" SET "authy_enabled" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["authy_enabled", "t"], ["updated_at", "2017-12-13 21:43:41.484889"], ["id", 2]]
+  [1m[35m (11.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 628ms (ActiveRecord: 12.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:43:41 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 46ms (Views: 42.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-13 23:43:43 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:43:43 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:43:44 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered /home/theblackarrow/.rvm/gems/ruby-2.4.2/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 46ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-12-13 23:43:47 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MaXXSKmz6tfPtGgc1/r631rIhVVh4mG7fiSR/gwjlaiEmFaw2wATGoK3Jaq03lkbIMG3PqyZHBqw9AhjnpwcPA==", "user"=>{"email"=>"theblackarrovv@uzhnu.edu.ua", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "theblackarrovv@uzhnu.edu.ua"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-13 21:43:47.721893"], ["last_sign_in_at", "2017-12-13 21:42:47.469571"], ["sign_in_count", 4], ["updated_at", "2017-12-13 21:43:47.722820"], ["id", 2]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/verify_authy
+Filter chain halted as :check_request_and_redirect_to_verify_token rendered or redirected
+Completed 302 Found in 198ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/users/verify_authy" for 127.0.0.1 at 2017-12-13 23:43:47 +0200
+Processing by Devise::DeviseAuthyController#GET_verify_authy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering devise/devise_authy/verify_authy.html.erb within layouts/application
+  Rendered devise/devise_authy/verify_authy.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 33ms (Views: 27.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/verify_authy" for 127.0.0.1 at 2017-12-13 23:44:12 +0200
+Processing by Devise::DeviseAuthyController#POST_verify_authy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bIert4aWBmI4iXjxPF/RogYl8+1EPXsRZxmaPuQgyBMxZNqQxLf3G5rja9WSF2mrTbfYeQQQMHD9XQ4AvCz8lw==", "user_id"=>"2", "token"=>"8793061", "commit"=>"Check Token"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "last_sign_in_with_authy" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_with_authy", "2017-12-13 21:44:13.385827"], ["updated_at", "2017-12-13 21:44:13.389755"], ["id", 2]]
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 5], ["current_sign_in_at", "2017-12-13 21:44:13.408074"], ["last_sign_in_at", "2017-12-13 21:43:47.721893"], ["updated_at", "2017-12-13 21:44:13.410129"], ["id", 2]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 872ms (ActiveRecord: 15.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-13 23:44:13 +0200
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.2ms)
+
+
